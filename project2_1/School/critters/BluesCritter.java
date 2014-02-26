@@ -1,5 +1,8 @@
 package critters;
 
-public class BluesCritter {
+import info.gridworld.actor.Critter;
+
+public class BluesCritter extends Critter{
+	
 
 }
