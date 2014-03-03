@@ -1,9 +1,11 @@
 package critters;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.Critter;
+import info.gridworld.actor.Rock;
 import info.gridworld.grid.Location;
 
 public class BluesCritter extends Critter{
@@ -16,6 +18,12 @@ public class BluesCritter extends Critter{
 	public ArrayList<Actor> getActors()
 	{
 		ArrayList<Actor> actors = new ArrayList<Actor>();
+		Location loc = getBlueRock();
+		if(loc != null)
+		{
+			actors.addAll(getGrid().getNeighbors(loc));
+			actors.add(getGrid().get(loc));
+		}
 		return actors;
 	}
 	
@@ -25,6 +33,20 @@ public class BluesCritter extends Critter{
 	 */
 	private Location getBlueRock()
 	{
+		Location loc = getLocation();
+		ArrayList<Actor> actors = new ArrayList<Actor>();
+		for(int r = loc.getRow() - 9; r <= loc.getRow() + 9; r++)
+			for(int c = loc.getCol() - 9; c <= loc.getCol() + 9; c++)
+			{
+				Location temp = new Location(r, c);
+				if(getGrid().isValid(temp) && getGrid().get(temp) != null)
+				{
+					actors.add(getGrid().get(temp));
+				}
+			}
+		for(Actor A : actors)
+			if(A instanceof Rock && A.getColor() == Color.BLUE)
+				return A.getLocation();
 		return null;
 	}
 	
@@ -33,7 +55,10 @@ public class BluesCritter extends Critter{
 	 */
 	public void processActors(ArrayList<Actor> actors)
 	{
-		
+		for(int i = 0; i < actors.size() - 1; i++)
+			actors.get(i).removeSelfFromGrid();
+		if(actors.size() > 0)
+			locs.add(actors.get(actors.size() - 1).getLocation());
 	}
 	
 	/**
