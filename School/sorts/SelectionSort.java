@@ -11,14 +11,21 @@ public class SelectionSort
     
     public static void sort(int[] x, int index)
     {
+//    	if(index == x.length - 1)
+//    		return;
+//    	
+//    	int minIndex = index;
+//    	for(int i = minIndex + 1; i < x.length; i++)
+//    		if(x[i] < x[minIndex])
+//    			minIndex = i;
+//    	swap(x, index, minIndex);
+//    	sort(x, index + 1);
+    	
     	if(index == x.length - 1)
     		return;
     	
-    	int minIndex = index;
-    	for(int i = minIndex + 1; i < x.length; i++)
-    		if(x[i] < x[minIndex])
-    			minIndex = i;
-    	swap(x, index, minIndex);
+    	int minIndexOfRest = indexOfMin(x, index);
+    	swap(x, index, minIndexOfRest);
     	sort(x, index + 1);
     }
     
