@@ -41,7 +41,7 @@ public class InsertionSort
 			for(int j = i - 1; j >= 0; j--)
 			{
 				if(x[j] < x[i])
-					x[j] = temp;
+					x[j] = x[j+1];
 			}
 		}
 	}
