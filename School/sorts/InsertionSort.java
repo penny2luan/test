@@ -19,40 +19,35 @@ public class InsertionSort
 			System.out.print(j + " ");
 	}
 	
-//	public static void sort(int[] x)
-//	{
-//		for(int i = 1; i < x.length; i++)
-//		{
-//			int temp = x[i];
-//			int j = i - 1;
-//			while(j >= 0 && temp < x[j])
-//			while ((j > -1) && (x[i] > temp))
-//			{
-//<<<<<<< HEAD
-//				x[j+1] = x[j];
-//=======
-//				x[j + 1] = x[j];
-//>>>>>>> refs/remotes/origin/master
-//				j--;
-//			}
-//			x[j+1] = temp;
-//		}
-//	}
-	
 	public static void sort(int[] x)
 	{
-	  for (int i = 1; i < x.length; i++)
-	  {
-	    int element = x[i];
-	    int j = i;
-	    while (j > 0 && element < x[j - 1])
-	    {
-	      x[j] = x[j - 1];
-	      j--;
-	    }
-
-	    x[j] = element;
-	  }
+		for(int i = 1; i < x.length; i++)
+		{
+			int temp = x[i];
+			int j = i - 1;
+			while ((j > -1) && (temp < x[j]))
+			{
+				x[j+1] = x[j];
+				j--;
+			}
+			x[j+1] = temp;
+		}
 	}
+	
+//version 2:
+//	public static void sort(int[] x)
+//	{
+//	  for (int i = 1; i < x.length; i++)
+//	  {
+//	    int element = x[i];
+//	    int j = i;
+//	    while (j > 0 && element < x[j - 1])
+//	    {
+//	      x[j] = x[j - 1];
+//	      j--;
+//	    }
+//	    x[j] = element;
+//	  }
+//	}
 
 }
