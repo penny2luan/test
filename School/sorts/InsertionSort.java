@@ -11,7 +11,6 @@ public class InsertionSort
 		x[1] = 3;
 		x[2] = 8;
 		x[3] = 6;
-		x[4] = 1;
 		for(int i : x)
 			System.out.print(i + " ");
 		System.out.println("");
@@ -20,20 +19,40 @@ public class InsertionSort
 			System.out.print(j + " ");
 	}
 	
+//	public static void sort(int[] x)
+//	{
+//		for(int i = 1; i < x.length; i++)
+//		{
+//			int temp = x[i];
+//			int j = i - 1;
+//			while(j >= 0 && temp < x[j])
+//			while ((j > -1) && (x[i] > temp))
+//			{
+//<<<<<<< HEAD
+//				x[j+1] = x[j];
+//=======
+//				x[j + 1] = x[j];
+//>>>>>>> refs/remotes/origin/master
+//				j--;
+//			}
+//			x[j+1] = temp;
+//		}
+//	}
+	
 	public static void sort(int[] x)
 	{
-		for(int i = 0; i < x.length; i++)
-		{
-			int temp = x[i];
-			int j = i - 1;
-			while(j >= 0 && temp < x[j])
-			{
-				x[j+1] = x[j];
-				j--;
-			}
-			x[j+1] = temp;
-		}
+	  for (int i = 1; i < x.length; i++)
+	  {
+	    int element = x[i];
+	    int j = i;
+	    while (j > 0 && element < x[j - 1])
+	    {
+	      x[j] = x[j - 1];
+	      j--;
+	    }
+
+	    x[j] = element;
+	  }
 	}
-	
 
 }
