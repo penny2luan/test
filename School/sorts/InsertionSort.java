@@ -1,7 +1,5 @@
 package sorts;
 
-import java.util.Comparator;
-
 public class InsertionSort
 {
 	public static void main(String args[])
