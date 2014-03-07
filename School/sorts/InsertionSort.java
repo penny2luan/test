@@ -9,11 +9,12 @@ public class InsertionSort
 		int[] x = new int[5];
 		x[0] = 5;
 		x[1] = 4;
-		x[2] = 3;
+		x[2] = 34;
 		x[3] = 2;
 		x[4] = 1;
 		for(int i : x)
 			System.out.print(i + " ");
+		System.out.println("");
 		sort(x);
 		for(int i : x)
 			System.out.print(i + " ");
@@ -35,16 +36,16 @@ public class InsertionSort
 	
 	public static void sort(int[] x)
 	{
-		for(int i = 0; i < x.length; i++)
+		for(int i = 1; i < x.length; i++)
 		{
 			int temp = x[i];
-			for(int j = i - 1; j >= 0; j--)
+			int j = i - 1;
+			while ((j > -1) && (x[i] > temp))
 			{
-				if(x[j] < x[i])
-					x[j] = x[j+1];
+				x[j + 1] = x[j];
+				j--;
 			}
 		}
 	}
-	
 
 }
