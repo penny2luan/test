@@ -1,7 +1,5 @@
 package sorts;
 
-import java.lang.reflect.Array;
-
 public class SelectionSort
 {
     public static void sort(int[] x)
