@@ -15,12 +15,8 @@ public class SnakeGame extends World{
 		BoundedGrid grid = new BoundedGrid(10, 10);
 		World world = new World(grid);
 		world.add(new Location(4, 2), new SnakeGame());
+		world.add(new Location(6, 4), new Apple());
 		world.show();
 	}
-	
-//	public boolean keyPressed(String description, Location loc)
-//	{
-//		return false;
-//	}
 
 }
