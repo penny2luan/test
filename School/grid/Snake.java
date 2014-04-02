@@ -1,16 +1,28 @@
 package grid;
 
+import java.util.ArrayList;
+
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 
 public class Snake {
 	 
 	private int direction;
+	private ArrayList blocks = new ArrayList<Block>();
+	private Location loc;
 	
 	public Snake()
 	{
 		direction = Location.NORTH;
-//		awhawlfhawelr create new class block, add new?
+		blocks.add(new Block(new Location(4, 2)));
+		loc = new Location(4, 2);
+	}
+	
+	public Snake(Location Loc)
+	{
+		direction = Location.NORTH;
+		blocks.add(new Block(Loc));
+		loc = Loc;
 	}
 
 	/**
