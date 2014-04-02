@@ -1,17 +1,20 @@
 package grid;
 
+import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 
 public class Snake {
+	 
+	private int direction;
 	
 	public Snake()
 	{
-		
+		direction = Location.NORTH;
+//		awhawlfhawelr create new class block, add new?
 	}
 
-	
 	/**
-	 * sets the direction of the snake depending on 
+	 * Sets the direction of the snake depending on the key that is pressed.
 	 * @param description
 	 * @return
 	 */
@@ -38,21 +41,35 @@ public class Snake {
 	 */
 	public void move()
 	{
-		
+		if(canMove())
+		{
+			
+		}
+		else
+			endGame();
 	}
 	
-	public void canMove()
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean canMove()
 	{
-		
+//		Grid gr = getGrid();
+//		if(!gr.isValid())
+		return false;
 	}
 	
+	/**
+	 * If the snake hits itself or the edge of the board, the game stops.
+	 */
 	public void endGame()
 	{
 		
 	}
 	
 	/**
-	 * 
+	 * Extends the snake when it eats an apple.
 	 */
 	public void extend()
 	{
@@ -65,7 +82,7 @@ public class Snake {
 	 */
 	public void setDirection(int Direction)
 	{
-		
+		direction = Direction;
 	}
 	
 }
