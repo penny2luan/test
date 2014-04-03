@@ -14,7 +14,8 @@ public class Snake {
 	public Snake()
 	{
 		direction = Location.NORTH;
-		blocks.add(new Block(new Location(4, 2)));
+		Block head = new Block(new Location(4, 2));
+		blocks.add(head);
 		loc = new Location(4, 2);
 	}
 	
