@@ -22,7 +22,6 @@ public class Snake {
 	public Snake(Location Loc)
 	{
 		direction = Location.NORTH;
-		blocks.add(new Block(Loc));
 		loc = Loc;
 	}
 
@@ -86,7 +85,8 @@ public class Snake {
 	 */
 	public void extend()
 	{
-		
+		Snake next = new Snake(new Location(4, 3));
+//		not sure how to extend snake yet
 	}
 	
 	/**
