@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 
-public class Snake {
+public class Snake<E> {
 	 
+	private Grid<E> grid;
 	private int direction;
 	private ArrayList blocks = new ArrayList<Block>();
 	private Location loc;
@@ -14,17 +15,12 @@ public class Snake {
 	public Snake()
 	{
 		direction = Location.NORTH;
-//		Block head = new Block(new Location(4, 2));
-//		blocks.add(head);
-//		loc = new Location(4, 2);
+		grid = null;
+		Block head = new Block(new Location(4, 2), direction);
+		blocks.add(head);
+		loc = new Location(4, 2);
 	}
 	
-	public Snake(Location Loc)
-	{
-		direction = Location.NORTH;
-		loc = Loc;
-	}
-
 	/**
 	 * Sets the direction of the snake depending on the key that is pressed.
 	 * @param description
@@ -51,11 +47,13 @@ public class Snake {
 	 * Moves the snake each turn, if next space is not valid, end game.
 	 * 
 	 */
-	public void move()
+	public void act()
 	{
 		if(canMove())
 		{
-			
+			if(getNext() instanceof Apple)
+				extend(blocks, direction);
+			Location next = loc.getAdjacentLocation(direction);
 		}
 		else
 			endGame();
@@ -67,26 +65,37 @@ public class Snake {
 	 */
 	public boolean canMove()
 	{
-//		Grid gr = getGrid();
-//		if(!gr.isValid())
+		Location next = ((Block) blocks.get(0)).getLocation().getAdjacentLocation(direction);
+		if(grid.isValid(next))
+			if(!(grid.get(next) instanceof Block))
+				return true;
 		return false;
 	}
+	
+	public E getNext()
+	{
+		Block first = (Block) blocks.get(0);
+		return grid.get(first.getLocation().getAdjacentLocation(direction));
+	}
+
 	
 	/**
 	 * If the snake hits itself or the edge of the board, the game stops.
 	 */
 	public void endGame()
 	{
-		
+		for(Object a : blocks)
+			((Block) a).removeSelfFromGrid();
 	}
 	
 	/**
 	 * Extends the snake when it eats an apple.
 	 */
-	public void extend()
+	public static void extend(ArrayList<Block> blocks, int dir)
 	{
-		Snake next = new Snake(new Location(4, 3));
-//		not sure how to extend snake yet
+		Block last = (Block) blocks.get(blocks.size() - 1);
+		Block next = new Block(last.getLocation().getAdjacentLocation(360 - dir), dir);
+		blocks.add(next);
 	}
 	
 	/**

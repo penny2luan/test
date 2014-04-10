@@ -15,8 +15,8 @@ public class SnakeGame extends World{
 		BoundedGrid grid = new BoundedGrid(10, 10);
 		World world = new World(grid);
 		world.add(new Location(4, 2), new Snake());
-		world.add(new Location(6, 4), new Apple());
+		world.add(new Location(6, 4), new Apple(new Location(6, 4)));
 		world.show();
 	}
-
+	
 }
