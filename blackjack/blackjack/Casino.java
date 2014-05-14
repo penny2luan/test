@@ -14,7 +14,7 @@ public class Casino
 {
     public static void main(String[] args)
     {
-        final int BETS = 1000;
+        final int BETS = 1000000;
         
         BlackjackObserver printing = new PrintingObserver();
         PlayerResultTrackingObserver results = new PlayerResultTrackingObserver();
