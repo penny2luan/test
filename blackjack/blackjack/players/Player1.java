@@ -27,31 +27,31 @@ public class Player1 implements BlackjackPlayer{
         int sum = HandUtilities.value(ownHand);
         int dealerCard = dealerUpCard.value().numericValue();
         
-//        boolean doubles = ownHand.get(0).value().equals(ownHand.get(1).value());
-//        if(doubles)
-//        {
-//        	if(sum == 4 || sum == 6)
-//        		if(dealerCard >= 8 || dealerCard <= 3)
-//        			return PlayerAction.HIT;
-//        	
-//        	if(sum == 8)
-//        		return PlayerAction.HIT;
-//        	
-//        	if(sum == 12)
-//        		if(dealerCard >= 7 || dealerCard <= 2)
-//        			return PlayerAction.HIT;
-//        	
-//        	if(sum == 14)
-//        		if(dealerCard >= 8 || dealerCard == 1)
-//        			return PlayerAction.HIT;
-//        	
-//        	if(sum == 18)
-//        		if(dealerCard == 7 || dealerCard == 10 || dealerCard == 1)
-//        			return PlayerAction.STAND;
-//        	
-//        	if(allowedActions.contains(PlayerAction.SPLIT))
-//        		return PlayerAction.SPLIT;
-//        }
+        boolean doubles = ownHand.get(0).value().equals(ownHand.get(1).value());
+        if(doubles)
+        {
+        	if(sum == 4 || sum == 6)
+        		if(dealerCard >= 8 || dealerCard <= 3)
+        			return PlayerAction.HIT;
+        	
+        	if(sum == 8)
+        		return PlayerAction.HIT;
+        	
+        	if(sum == 12)
+        		if(dealerCard >= 7 || dealerCard <= 2)
+        			return PlayerAction.HIT;
+        	
+        	if(sum == 14)
+        		if(dealerCard >= 8 || dealerCard == 1)
+        			return PlayerAction.HIT;
+        	
+        	if(sum == 18)
+        		if(dealerCard == 7 || dealerCard == 10 || dealerCard == 1)
+        			return PlayerAction.STAND;
+        	
+        	if(allowedActions.contains(PlayerAction.SPLIT))
+        		return PlayerAction.SPLIT;
+        }
         
         if(!HandUtilities.soft(ownHand))
         {
