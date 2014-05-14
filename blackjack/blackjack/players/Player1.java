@@ -99,7 +99,7 @@ public class Player1 implements BlackjackPlayer{
         	return PlayerAction.STAND;
         }
         
-        else //soft
+        else
         {
         	if((sum == 13 || sum == 14) && (dealerCard == 5 || dealerCard == 6))
         		if(allowedActions.contains(PlayerAction.DOUBLE))
