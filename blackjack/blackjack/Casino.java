@@ -9,6 +9,7 @@ import blackjack.observers.PrintingObserver;
 import blackjack.observers.playerResultTracking.PlayerResultTrackingObserver;
 import blackjack.players.Player1;
 import blackjack.players.RandomPlayer;
+import blackjack.players.ap157379.CountingPlayer;
 
 public class Casino
 {
@@ -25,7 +26,7 @@ public class Casino
         
         List<BlackjackPlayer> players = new ArrayList<BlackjackPlayer>();
 //        players.add(new RandomPlayer());
-        players.add(new Player1());
+        players.add(new CountingPlayer());
         
         
         CardSource cardSource = new AutoShuffleShoe(6, 0.75);
