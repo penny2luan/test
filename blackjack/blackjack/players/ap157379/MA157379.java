@@ -208,7 +208,7 @@ public class MA157379 implements BlackjackPlayer {
 		
 //		if(card.value() == Value.ACE)
 //			runningCount--;
-		
+    	
 		count = (runningCount * 52) / (312 - numCards);
 
         
