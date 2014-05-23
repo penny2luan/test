@@ -23,8 +23,10 @@ public class MA157379 implements BlackjackPlayer {
     @Override
     public double bet(double minBet, double maxBet)
     {
-        if(count >= 5)
-        	return maxBet;
+    	if(count >= 10)
+    		return maxBet;
+    	else if(count >= 5)
+        	return (minBet + maxBet) / 2;
         else if(count >= 4)
         	return minBet * 10;
         else if(count >= 3)
@@ -194,20 +196,29 @@ public class MA157379 implements BlackjackPlayer {
     {
     	numCards++;
 
-    	if(card.value().numericValue() == 2 || card.value().numericValue() == 3)
+//    	if(card.value().numericValue() == 2 || card.value().numericValue() == 3)
+//			runningCount++;
+//		
+//		if(card.value().numericValue() == 4 || card.value().numericValue() == 5)
+//			runningCount += 2;
+//		
+//		if(card.value().numericValue() == 7 || card.value().numericValue() == 6)
+//			runningCount++;
+//		
+//		if(card.value().numericValue() == 10)
+//			runningCount -= 2;
+//		
+////		if(card.value() == Value.ACE)
+////			runningCount--;
+    	
+    	if(card.value().numericValue() >= 2 && card.value().numericValue() <= 6)
 			runningCount++;
 		
-		if(card.value().numericValue() == 4 || card.value().numericValue() == 5)
-			runningCount += 2;
+//		if(card.value().numericValue() == 10)
+//			runningCount -= 2;
 		
-		if(card.value().numericValue() == 7 || card.value().numericValue() == 6)
-			runningCount++;
-		
-		if(card.value().numericValue() == 10)
-			runningCount -= 2;
-		
-//		if(card.value() == Value.ACE)
-//			runningCount--;
+		if(card.value() == Value.ACE || card.value().numericValue() == 10)
+			runningCount--;
     	
 		count = (runningCount * 52) / (312 - numCards);
 
