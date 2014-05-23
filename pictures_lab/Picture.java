@@ -224,6 +224,8 @@ public class Picture extends SimplePicture
 	  for(int row = 0; row < pixels.length; row++)
 		  for(int col = 0; col < pixels[0].length; col++)
 		  {
+			  //need to be close to color, not exact equal
+			  //not working yet
 			  if(pixels[row][col].getColor().equals(Color.BLUE))
 				  pixels[row][col].setColor(Color.GRAY);
 		  }
