@@ -20,7 +20,7 @@ import javax.swing.border.*;
 public class PictureExplorer implements MouseMotionListener, ActionListener, MouseListener
 {
  
-  // current indices
+  // current indicies
   /** row index */
   private int rowIndex = 0; 
   /** column index */
@@ -796,13 +796,12 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
   }
   
   /**
-   * Test Main.  It will explore the beach 
+   * Test Main.  It will explore the desert image
    */
   public static void main( String args[])
   {
     Picture pix = new Picture("Desert.jpg");
     pix.explore();
   }
-  
   
 }

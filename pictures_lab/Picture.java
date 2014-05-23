@@ -217,15 +217,27 @@ public class Picture extends SimplePicture
     }
   }
   
+  public void chromakey()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+//	  Pixel[][] pixels2 = second.getPixels2D();
+	  for(int row = 0; row < pixels.length; row++)
+		  for(int col = 0; col < pixels[0].length; col++)
+		  {
+			  if(pixels[row][col].getColor().equals(Color.BLUE))
+				  pixels[row][col].setColor(Color.GRAY);
+		  }
+  }
   
   /* Main method for testing - each class in Java can have a main 
    * method 
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("beach.jpg");
-    beach.explore();
-    beach.zeroBlue();
+    Picture beach = new Picture("Desert.jpg");
+//    beach.explore();
+//    beach.zeroBlue();
+    beach.chromakey();
     beach.explore();
   }
   
