@@ -231,6 +231,17 @@ public class Picture extends SimplePicture
 				  pixels[row][col].setColor(pixels2[row][col].getColor());
   }
   
+  public void encode(Picture message)
+  {
+	  
+  }
+  
+  public Picture decode()
+  {
+	  
+	  return null;
+  }
+  
   /* Main method for testing - each class in Java can have a main 
    * method 
    */
