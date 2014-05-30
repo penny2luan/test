@@ -349,10 +349,12 @@ public class Picture extends SimplePicture
 //    beach.zeroBlue();
 //    desert.chromakey(koala);
 //    desert.sepia(25, 3);
-    desert.encode("ABCDEFGHIJKLMNOPasdfgwe6");
-    System.out.println(desert.decode());
+    koala.sepia();
+//    desert.encode("ABCDEFGHIJKLMNOPasdfgwe6");
+//    System.out.println(desert.decode());
 
-    desert.explore();
+//    desert.explore();
+    koala.explore();
   }
   
 } // this } is the end of class Picture, put all new methods before this
