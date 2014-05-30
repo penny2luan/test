@@ -1,10 +1,9 @@
 import java.awt.Color;
 import java.awt.Image;
 
-
 public class PictureEdit extends Picture{
 	
-	  /**
+	/**
 	   * Method to replace blue pixels with pixels from the second picture.
 	   * @param second picture to replace blue pixels with
 	   */
@@ -19,7 +18,49 @@ public class PictureEdit extends Picture{
 	  }
 	  
 	  /**
-	   * Method to change an image to sepia
+	   * Method to encode a message into the picture.
+	   * @param message the message to be encoded into the picture
+	   */
+	  public void encode(String message)
+	  {
+		  Pixel[][] pixels = this.getPixels2D();
+		  int col = 0;
+		  for(int i = 0; i < message.length(); i++)
+		  {
+			  pixels[0][col].setBlue((int) message.charAt(i));
+			  col += 5;
+		  }
+		  pixels[0][col].setBlue(254);
+		  //convert string to ints or char
+		  //set every 5th pixel alpha value to char / int value
+	  }
+	  
+	  /**
+	   * Method to return the encoded string in the photo.
+	   * @return the encoded string from the encode() method
+	   */
+	  public String decode()
+	  {
+		  Pixel[][] pixels = this.getPixels2D();
+		  String decoded = new String();
+		  int col = 0;
+		  boolean complete = false;
+		  while(!complete)
+		  {
+			  int next = pixels[0][col].getBlue();
+			  if(next != 254 && col <= pixels.length)
+			  {
+					decoded += (char) next;
+					col += 5;
+			  }
+			  else
+				  complete = true;
+		  }
+		  return decoded;
+	  }
+	  
+	  /**
+	   * Method to change an image to sepia.
 	   */
 	  public void sepia()
 	  {
@@ -44,10 +85,9 @@ public class PictureEdit extends Picture{
 				  pixels[row][col].updatePicture(pixels[row][col].getAlpha(), r, g, b);
 			  }
 	  }
-	  
 
 	  /**
-	   * Method to change an image to sepia
+	   * Method to change an image to sepia.
 	   * @param intensity the intensity of the sepia; 0 gives a black and white image. 
 	   * the higher the intensity, the more yellow the image appears.
 	   * Effect appears best at intensity around 25.
@@ -81,6 +121,17 @@ public class PictureEdit extends Picture{
 				  if (b>255) b=255;
 				  pixels[row][col].updatePicture(pixels[row][col].getAlpha(), r, g, b);
 			  }
+	  }
+	  
+	  public static void main(String[] args) 
+	  {
+	    Picture desert = new Picture("Desert.jpg");
+	    Picture koala = new Picture("Koala.jpg");
+	    desert.chromakey(koala);
+//	    desert.sepia(25, 3);
+//	    desert.encode("Aae323{?+2]");
+//	    System.out.println(desert.decode());
+	    desert.explore();
 	  }
 
 }

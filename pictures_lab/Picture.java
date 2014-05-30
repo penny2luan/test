@@ -231,20 +231,28 @@ public class Picture extends SimplePicture
 				  pixels[row][col].setColor(pixels2[row][col].getColor());
   }
   
+  /**
+   * method to encode a message into the picture.
+   * @param message the message to be encoded into the picture
+   */
   public void encode(String message)
   {
 	  Pixel[][] pixels = this.getPixels2D();
 	  int col = 0;
 	  for(int i = 0; i < message.length(); i++)
 	  {
-		  pixels[0][col].setAlpha((int) message.charAt(i));
+		  pixels[0][col].setBlue((int) message.charAt(i));
 		  col += 5;
 	  }
-	  pixels[0][col].setAlpha(-1);
+	  pixels[0][col].setBlue(254);
 	  //convert string to ints or char
 	  //set every 5th pixel alpha value to char / int value
   }
   
+  /**
+   * method to return the encoded string in the photo
+   * @return the encoded string from the encode() method
+   */
   public String decode()
   {
 	  Pixel[][] pixels = this.getPixels2D();
@@ -253,7 +261,14 @@ public class Picture extends SimplePicture
 	  boolean complete = false;
 	  while(!complete)
 	  {
-		  decoded += (char) pixels[0][col].getAlpha();
+		  int next = pixels[0][col].getBlue();
+		  if(next != 254 && col <= pixels.length)
+		  {
+				decoded += (char) next;
+				col += 5;
+		  }
+		  else
+			  complete = true;
 	  }
 	  return decoded;
   }
@@ -334,7 +349,9 @@ public class Picture extends SimplePicture
 //    beach.zeroBlue();
 //    desert.chromakey(koala);
 //    desert.sepia(25, 3);
-    desert.encode("Hello");
+    desert.encode("ABCDEFGHIJKLMNOPasdfgwe6");
+    System.out.println(desert.decode());
+
     desert.explore();
   }
   
