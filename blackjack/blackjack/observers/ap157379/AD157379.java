@@ -9,7 +9,7 @@ import blackjack.PlayerAction;
 import blackjack.Result;
 import blackjack.observers.playerResultTracking.PlayerResults;
 
-public class CR157379 implements CountReporter, BlackjackObserver{
+public class AD157379 implements CountReporter, BlackjackObserver{
 
     private List<PlayerResults> playerResults;
     
@@ -79,9 +79,4 @@ public class CR157379 implements CountReporter, BlackjackObserver{
 		
 	}
 	
-	
-	
-	
-	
-
 }
