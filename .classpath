@@ -6,5 +6,6 @@
 	<classpathentry kind="lib" path="libs/gridworld.jar"/>
 	<classpathentry kind="src" path="blackjack"/>
 	<classpathentry kind="src" path="pictures_lab"/>
+	<classpathentry kind="src" path="encryption"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

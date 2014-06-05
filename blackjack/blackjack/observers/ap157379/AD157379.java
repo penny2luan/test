@@ -12,11 +12,12 @@ import blackjack.observers.playerResultTracking.PlayerResults;
 public class AD157379 implements CountReporter, BlackjackObserver{
 
     private List<PlayerResults> playerResults;
+    private ArrayList<ArrayList<Integer>> bets;
     
 	@Override
 	public List<Integer> suspectedCounterIndexes() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Integer> suspicious = new ArrayList<Integer>();
+		return suspicious;
 	}
 
 	@Override
