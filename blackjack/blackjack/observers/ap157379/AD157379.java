@@ -12,11 +12,17 @@ import blackjack.observers.playerResultTracking.PlayerResults;
 public class AD157379 implements CountReporter, BlackjackObserver{
 
     private List<PlayerResults> playerResults;
-    private ArrayList<ArrayList<Integer>> bets;
+    private int count_a5, count_hilo, count_REKO;
+	private List<ArrayList<Double>> bets = new ArrayList<ArrayList<Double>>();
+	private List<Integer> counters = new ArrayList<Integer>();
     
 	@Override
 	public List<Integer> suspectedCounterIndexes() {
 		ArrayList<Integer> suspicious = new ArrayList<Integer>();
+		final int SUSPICIOUS = 100; //can be changed
+		for(int i=0; i<bets.size(); i++) 
+			if(bets.get(i).size() >= SUSPICIOUS) 
+				suspicious.add(i);
 		return suspicious;
 	}
 
@@ -29,7 +35,11 @@ public class AD157379 implements CountReporter, BlackjackObserver{
 
 	@Override
 	public void initialBet(int playerIndex, double bet) {
-		// TODO Auto-generated method stub
+		if(this.bets.size() == 0) 
+			for(int i=0; i < bets.size(); i++) {
+				this.bets.add(new ArrayList<Double>());
+				this.bets.get(i).addAll(this.bets.get(i));
+			}
 		
 	}
 
@@ -41,8 +51,45 @@ public class AD157379 implements CountReporter, BlackjackObserver{
 
 	@Override
 	public void faceUpCard(Card card) {
-		// TODO Auto-generated method stub
-		
+		switch(card.value()) {
+		case N2: 
+			count_hilo++;
+			count_REKO++;
+			break;
+		case N3: 
+			count_hilo++;
+			count_REKO++;
+			break;
+		case N4: 
+			count_hilo++;
+			count_REKO++;
+			break;
+		case N5:
+			count_a5++; 
+			count_hilo++;
+			count_REKO++;
+			break;
+		case N6: 
+			count_hilo++;
+			count_REKO++;
+			break;
+		case N7:
+			count_REKO++;
+			break;
+		case N8:
+			break;
+		case N9:
+			break;
+		case N10: case JACK: case QUEEN: case KING:
+			count_hilo--;
+			count_REKO--;
+			break;
+		case ACE:
+			count_a5--;
+			count_hilo--;
+			count_REKO--;
+			break;
+		}
 	}
 
 	@Override
@@ -76,8 +123,20 @@ public class AD157379 implements CountReporter, BlackjackObserver{
 	@Override
 	public void result(int playerIndex, double bet, List<Card> playersHand,
 			List<Card> dealersHand, Result result) {
-		// TODO Auto-generated method stub
+		int n = bets.get(playerIndex).size()-1;
 		
+		if((bet > bets.get(playerIndex).get(n) && (count_hilo > 10 || count_REKO > 10 || count_a5 > 5)))
+		{
+			Double next;
+			for(int i = 0; i < bets.get(playerIndex).size(); i++)
+			{
+				next = bets.get(playerIndex).get(i);
+				if(next < bet)
+					bets.get(playerIndex).add(i, bet);
+			}
+		}
 	}
+	
+
 	
 }

@@ -6,6 +6,8 @@ import java.util.List;
 import blackjack.cardSources.AutoShuffleShoe;
 import blackjack.cardSources.ContinuousShuffler;
 import blackjack.observers.PrintingObserver;
+import blackjack.observers.ap157379.AD157379;
+import blackjack.observers.ap157379.CountReporter;
 import blackjack.observers.playerResultTracking.PlayerResultTrackingObserver;
 import blackjack.players.Player1;
 import blackjack.players.RandomPlayer;
@@ -19,6 +21,7 @@ public class Casino
         final int BETS = 1000000;
         
         BlackjackObserver printing = new PrintingObserver();
+        CountReporter report = new AD157379();
         PlayerResultTrackingObserver results = new PlayerResultTrackingObserver();
         
         List<BlackjackObserver> observers = new ArrayList<BlackjackObserver>();
@@ -26,7 +29,7 @@ public class Casino
         observers.add(results);
         
         List<BlackjackPlayer> players = new ArrayList<BlackjackPlayer>();
-//        players.add(new RandomPlayer());
+        players.add(new RandomPlayer());
         players.add(new MA157379());
         
         
@@ -43,6 +46,8 @@ public class Casino
         
         for(int i = 0; i < players.size(); i++)
             System.out.println(results.resultsAsString(i));
+        
+        System.out.println(report.suspectedCounterIndexes());
     }
 
     private static void printCasinoResults(Table table)

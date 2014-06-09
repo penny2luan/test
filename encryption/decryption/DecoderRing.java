@@ -31,21 +31,16 @@ public class DecoderRing {
 		}
 	}
 	
-	public static void replace(char letterToChange, char letterToChangeTo)
-	{
-//		decoded.replace(letterToChange, newChar)
-	}
-	
-	public static void undo()
-	{
-//		replace(changeTo, changed);
-		decoded = decoded.replace(changeTo, changed);
-	}
+//	public static void undo()
+//	{
+////		replace(changeTo, changed);
+//		decoded = decoded.replace(changeTo, changed);
+//	}
 	
 		
 	public static void main(String[] args)
 	{
-		code = "HI MY NAME IS JASON I LIKE PIE AND ALL SORTS OF GOOD'. FOOD AND IM BORED SO IM GOING TO MAKE THIS SUPER LONG WHEEEeeeeeeeeejubguheeeeE";
+		code = "HI MY NAME IS JASON I LIKE PIE AND ALL SORTS OF GOOD'. FOOD AND IM BORED SO IM GOING TO MAKE THIS SUPER LONG Yay";
 		decoded = code;
 		in = new Scanner(System.in);
 		printFrequency(code);
@@ -64,12 +59,10 @@ public class DecoderRing {
 				changed = in.next().toUpperCase().charAt(0);
 				System.out.println("Input character to change to: ");
 				changeTo = in.next().toUpperCase().charAt(0);
-//				replace(c1, c2);
 				lastState = decoded;
 				decoded = decoded.replace(changed, changeTo);
 				break;
 			case "undo":
-//				undo();
 				if(lastState != null && lastState != decoded)
 					decoded = lastState;
 				else
